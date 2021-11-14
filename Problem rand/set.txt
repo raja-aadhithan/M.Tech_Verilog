@@ -1,0 +1,19 @@
+case ({s2,s1,s0}) begin
+    3'd0 : A<= A, B<= B;
+    3'd1 : A<= A, B<= A + B;
+    3'd2 : A<= A, B<= B>>1;
+    3'd3 : A<= A, B<= A - Data;
+    3'd4 : A<= B, B<= B;
+    3'd5 : A<= A + B, B<= B;
+    3'd6 : A<= B>>1, B<= B;
+    3'd7 : A<= A - Data, B<= B;
+end
+endcase
+
+Y = A'B'C'D' + A'BCD' + AB'C'D' + ABCD' 
+Y = A'D'(B'C'+BC) + AD'(B'C'+BC)
+Y = D'(B'C' + BC)
+Y = D'(B^C)'
+
+W0 = W & (S1 + S0')
+W1 = W & (S1 + S0)

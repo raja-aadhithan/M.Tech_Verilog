@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/User/Documents/Xilinx/DeBAM/tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/tb/q" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">q[15:0]</obj_property>
+      <obj_property name="ObjectShortName">q[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a[7:0]</obj_property>
+      <obj_property name="ObjectShortName">a[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b[7:0]</obj_property>
+      <obj_property name="ObjectShortName">b[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/av_per" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">av_per[31:0]</obj_property>
+      <obj_property name="ObjectShortName">av_per[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">count[31:0]</obj_property>
+      <obj_property name="ObjectShortName">count[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/percent" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">percent[31:0]</obj_property>
+      <obj_property name="ObjectShortName">percent[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/eff" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">eff[31:0]</obj_property>
+      <obj_property name="ObjectShortName">eff[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">s[15:0]</obj_property>
+      <obj_property name="ObjectShortName">s[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/p" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">p[15:0]</obj_property>
+      <obj_property name="ObjectShortName">p[15:0]</obj_property>
+   </wvobject>
+</wave_config>
