@@ -103,3 +103,42 @@ module lut_tb();
 	end
 	
 endmodule	
+
+//APPROXIMATE ADDER 3
+
+module lut(input [1:0] a,b, output [1:0] s);
+  
+  LUT2 #(.INIT(4'hE)) LUT2_inst (.O(s[0]), .I0(b[0]), .I1(a[0]));
+  LUT4 #(.INIT(16'h80EC)) LUT4_inst (.O(s[1]), .I0(b[0]), .I1(b[1]), .I2(a[0]), .I3(a[1]));
+  
+endmodule 
+module lut_tb();
+
+	reg [1:0] a,b;
+	reg [2:0]z;
+	wire [1:0]s;
+	integer i,c,d,err;
+
+	lut dut(a,b,s);
+
+	initial begin
+		$monitor("@time %3d : a is %2b, b is %2b output is %2b", $time,a,b,s);
+			c =0; d =0; err =0;
+			for (i=0; i<16; i=i+1) begin
+				{a,b} = i;
+				#1;
+				z = a+b;
+				if(s != z) begin
+					$display("the values don't match when a:%d, b:%d : actual output:%d, expected output:%d",a,b,s,z);
+					c = c +1;
+				end 
+				d = d +1;
+				#4;
+			end
+			
+			err = ((d-c)*100)/d;
+			$display("the values matches for %3d percentage of times",err);
+		$finish;
+	end
+	
+endmodule	
