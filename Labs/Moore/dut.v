@@ -6,7 +6,7 @@ module moore(input i,clk,rst, output reg y);
 		case(state)
 			idle	: next_state = i ? s1	: idle;
 			s1		: next_state = i ? s1	: s10;
-			s10	: next_state = i ? s101	: idle;
+			s10		: next_state = i ? s101	: idle;
 			s101	: next_state = i ? s1	: s1010;
 			s1010	: next_state = i ? s1	: idle;
 		endcase
