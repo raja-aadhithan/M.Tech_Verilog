@@ -1,34 +1,27 @@
 module fir_tb;
-	reg [31:0] x;   // 32 bit input to FIR
-	reg clk = 0;    // Clock Signal
-	wire [31:0] y;  // 32 bit output fron FIR 
+	reg [31:0] x;
+	reg [15:0] add;
+	reg clk =0;
+	wire [31:0] y;
+	integer fx,fy;
 
-	fir ut(x,y,clk); // Istantiating the DUT
+	fir ut(x,y,clk);
 
-	initial forever #5 clk = !clk; // setting clock period as 10ns
-		
+	initial forever #5 clk = !clk;
+
 	initial begin
-		x = 1; #100; // x[n-9] to x[9] will have the same input 1
-        $display("for x = %0d y is %0d",x,y); 
-
-		x = 2; #100; // x[n-9] to x[9] will have the same input 2
-		$display("for x = %0d y is %0d",x,y); 
-		
-        x = 3; #50; // x[n-9] to x[n-5] will have the input 2, x[n-4] to x[n] will have input 3
-		$display("for x = %0d y is %0d",x,y);
-		
-        x = 4; #50; // x[n-9] to x[n-5] will have the input 3, x[n-4] to x[n] will have input 4
-		$display("for x = %0d y is %0d",x,y);
-		
-		x = 124; #50; // for 1st 5 cycles 
-		x = 1116988; #50; // for 2nd 5 cycles
-		$display("for x = %0d y is %0d",x,y);
-		
-		x = 42; #20; // for 2 cycles
-		x = 124; #30; // for 3 cycles
-		x = 34; #20; // for 2 cycles
-		x = 67; #20; // for 2 cycles
-		x = 1116988; #10; // for 1 cycle
-		$display("for x = %0d y is %0d",x,y);
-	end
-endmodule
+		fx = $fopen("C:\\Users\\User\\Documents\\Code-sync\\M.Tech_Verilog\\FIR Assignment\\Data\\xdata.txt", "w");
+		fy= $fopen("C:\\Users\\User\\Documents\\Code-sync\\M.Tech_Verilog\\FIR Assignment\\Data\\yorig_data.txt", "w");
+		repeat(100)begin
+			x = $random%100000;
+			add = $random;
+			x = x*1000000 + add;
+			#1;
+			$fdisplay(fx,"%d",x);
+			$fdisplay(fy,"%d",y);
+			#9;
+		end 
+		$fclose(fx);
+		$fclose(fy);	
+		end
+endmodule 
