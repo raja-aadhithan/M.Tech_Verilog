@@ -17,7 +17,7 @@ module tb();
 		i = 1;
 		@(negedge clk) i = 0;
 		@(negedge clk) i = 1;
-		@(negedge clk) i = 0;
+		@(negedge clk) i = 1;
 		@(negedge clk) i = 1;
 		@(negedge clk) i = 0;
 		@(negedge clk) i = 1;
