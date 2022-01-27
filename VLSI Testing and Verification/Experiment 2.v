@@ -6,7 +6,7 @@ endmodule
 module tb();
 	reg a,b,c;
 	wire s,cy;
-   integer x=0;
+    integer x=0;
 	fa dut(a,b,c,s,cy);
 	
 	initial begin
