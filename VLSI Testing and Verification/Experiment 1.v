@@ -1,6 +1,6 @@
 //Design
 module mux(input [3:0]i, [1:0]s, output y);
-	assign y = s[1]?(s[0]?i[3]:i[2]):(s[0]?i[1]:i[0]);
+	assign y = s[1]?(s[0]?i[3]:i[2]):(s[0]?i[1]:i[0]); //logic for mux
 endmodule 
 
 //TB
