@@ -142,3 +142,202 @@ module lut_tb();
 	end
 	
 endmodule	
+
+//APPROXIMATE ADDER 4
+
+module lut(input [1:0] a,b,input cin, output [1:0] s, output cout);
+  
+  LUT2 #(.INIT(4'hE)) LUT2_inst (.O(s[0]), .I0(b[0]), .I1(a[0]));
+  LUT5 #(.INIT(32'hE080FEF8)) LUT5_inst (.O(s[1]), .I0(cin), .I1(b[0]), .I2(b[1]), .I3(a[0]), .I4(a[1]));
+  assign cout = a[1];
+  
+endmodule 
+module lut_tb();
+
+	reg [1:0] a,b;
+	reg cin;
+	wire [1:0]s;
+	wire cout;
+	integer i,c,d,err;
+
+	lut dut(a,b,cin,s,cout);
+
+	initial begin
+		$monitor("@time %3d : a is %2b, b is %2b output is %2b", $time,a,b,s);
+			c =0; d =0; err =0;
+			for (i=0; i<32; i=i+1) begin
+				{a,b,cin} = i;
+				#1;
+				if({cout,s} != a+b+cin) begin
+					$display("the values don't match when a:%d, b:%d : actual output:%d, expected output:%d",a,b,{cout,s},a+b+cin);
+					c = c +1;
+				end 
+				d = d +1;
+				#4;
+			end
+			
+			err = ((d-c)*100)/d;
+			$display("the values matches for %3d percentage of times",err);
+		$finish;
+	end
+	
+endmodule
+
+//APPROXIMATE ADDER 5
+
+module lut(input [1:0] a,b,input cin, output [1:0] s, output cout);
+  
+  LUT3 #(.INIT(8'h8E)) LUT3_inst (.O(s[0]), .I0(cin), .I1(b[0]), .I2(a[0]));
+  LUT4 #(.INIT(16'h80EC)) LUT4_inst (.O(s[1]), .I0(b[0]), .I1(b[1]), .I2(a[0]), .I3(a[1]));
+  assign cout = a[1];
+  
+endmodule 
+module lut_tb();
+
+	reg [1:0] a,b;
+	reg cin;
+	wire [1:0]s;
+	wire cout;
+	integer i,c,d,err;
+
+	lut dut(a,b,cin,s,cout);
+
+	initial begin
+		$monitor("@time %3d : a is %2b, b is %2b output is %2b", $time,a,b,s);
+			c =0; d =0; err =0;
+			for (i=0; i<32; i=i+1) begin
+				{a,b,cin} = i;
+				#1;
+				if({cout,s} != a+b+cin) begin
+					$display("the values don't match when a:%d, b:%d : actual output:%d, expected output:%d",a,b,{cout,s},a+b+cin);
+					c = c +1;
+				end 
+				d = d +1;
+				#4;
+			end
+			
+			err = ((d-c)*100)/d;
+			$display("the values matches for %3d percentage of times",err);
+		$finish;
+	end
+	
+endmodule	
+
+//APPROXIMATE ADDER 6
+
+module lut(input [1:0] a,b,input cin, output [1:0] s, output cout);
+  
+  LUT3 #(.INIT(8'h8E)) LUT3_inst (.O(s[0]), .I0(cin), .I1(b[0]), .I2(a[0]));
+  LUT5 #(.INIT(32'hE080FEF8)) LUT5_inst (.O(s[1]), .I0(cin), .I1(b[0]), .I2(b[1]), .I3(a[0]), .I4(a[1]));
+  assign cout = a[1];
+  
+endmodule 	
+module lut_tb();
+
+	reg [1:0] a,b;
+	reg cin;
+	wire [1:0]s;
+	wire cout;
+	integer i,c,d,err;
+
+	lut dut(a,b,cin,s,cout);
+
+	initial begin
+		$monitor("@time %3d : a is %2b, b is %2b output is %2b", $time,a,b,s);
+			c =0; d =0; err =0;
+			for (i=0; i<32; i=i+1) begin
+				{a,b,cin} = i;
+				#1;
+				if({cout,s} != a+b+cin) begin
+					$display("the values don't match when a:%d, b:%d : actual output:%d, expected output:%d",a,b,{cout,s},a+b+cin);
+					c = c +1;
+				end 
+				d = d +1;
+				#4;
+			end
+			
+			err = ((d-c)*100)/d;
+			$display("the values matches for %3d percentage of times",err);
+		$finish;
+	end
+	
+endmodule	
+
+//APPROXIMATE ADDER 7
+
+module lut(input [1:0] a,b,input cin, output [1:0] s, output cout);
+  
+  LUT5 #(.INIT(32'hE080FEF8)) LUT5_inst (.O(s[1]), .I0(cin), .I1(b[0]), .I2(b[1]), .I3(a[0]), .I4(a[1]));
+  assign cout = a[1];
+  assign s[0] = s[1];
+  
+endmodule 	
+module lut_tb();
+
+	reg [1:0] a,b;
+	reg cin;
+	wire [1:0]s;
+	wire cout;
+	integer i,c,d,err;
+
+	lut dut(a,b,cin,s,cout);
+
+	initial begin
+		$monitor("@time %3d : a is %2b, b is %2b output is %2b", $time,a,b,s);
+			c =0; d =0; err =0;
+			for (i=0; i<32; i=i+1) begin
+				{a,b,cin} = i;
+				#1;
+				if({cout,s} != a+b+cin) begin
+					$display("the values don't match when a:%d, b:%d : actual output:%d, expected output:%d",a,b,{cout,s},a+b+cin);
+					c = c +1;
+				end 
+				d = d +1;
+				#4;
+			end
+			
+			err = ((d-c)*100)/d;
+			$display("the values matches for %3d percentage of times",err);
+		$finish;
+	end
+	
+endmodule	
+
+//APPROXIMATE ADDER 8
+
+module lut(input [1:0] a,b, output [1:0] s);
+ 
+  LUT4 #(.INIT(16'h80EC)) LUT4_inst (.O(s[1]), .I0(b[0]), .I1(b[1]), .I2(a[0]), .I3(a[1]));
+  assign s[0] = s[1];
+
+endmodule 
+module lut_tb();
+
+	reg [1:0] a,b;
+	reg [2:0]z;
+	wire [1:0]s;
+	integer i,c,d,err;
+
+	lut dut(a,b,s);
+
+	initial begin
+		$monitor("@time %3d : a is %2b, b is %2b output is %2b", $time,a,b,s);
+			c =0; d =0; err =0;
+			for (i=0; i<16; i=i+1) begin
+				{a,b} = i;
+				#1;
+				z = a+b;
+				if(s != z) begin
+					$display("the values don't match when a:%d, b:%d : actual output:%d, expected output:%d",a,b,s,z);
+					c = c +1;
+				end 
+				d = d +1;
+				#4;
+			end
+			
+			err = ((d-c)*100)/d;
+			$display("the values matches for %3d percentage of times",err);
+		$finish;
+	end
+	
+endmodule	
