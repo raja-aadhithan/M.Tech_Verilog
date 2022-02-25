@@ -25,12 +25,16 @@ endmodule
 //TB
 
 module tb;
+
 	
 	reg i=0,rst,clk=0;// Inputs
 	wire y;// Output
 	fsm uut (i,rst,clk,y);// Instantiate the Unit Under Test (UUT)
-
+	reg [3:0]q=0	;
+	integer err = 0;
+	
 	initial forever #5 clk = !clk;
+	initial forever @(posedge clk) q <= {q[2:0],i};
 	
 	initial begin
 		$monitor("%0d : input i = %b state is %d, output y = %b ",$time,i,uut.p_state,y);
@@ -53,6 +57,17 @@ module tb;
 		@(negedge clk) i = 0;
 		@(negedge clk) i = 0;
 		@(negedge clk) i = 1;
-		#100 $finish;
+		#100;
+		if(err) $display("error"); else $display("success");
+		#20;
+		$finish;
 	end      
-endmodule 
+	
+	always@(q)begin
+		if(q == 4'b1001)begin
+			@(negedge clk);
+			if(!y) err = err+1;
+		end
+	end
+	
+endmodule  
